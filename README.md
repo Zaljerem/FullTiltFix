@@ -12,7 +12,7 @@ You'll need a tool like Xenos to inject this DLL into the .exe at runtime (at so
 
 
 
-Pre-compiled DLL and source is included (has a dependency on MinHook).
+Pre-compiled DLL and source is included (has a dependency on MinHook - https://github.com/TsudaKageyu/minhook License: https://opensource.org/license/BSD-2-Clause)
 
 
 
