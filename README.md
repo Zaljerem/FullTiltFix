@@ -1,10 +1,10 @@
 # FullTiltFix
 
-An injectable DLL that fixes the bug Win95 "Full Tilt!" has with saving strings to the registry.
+An injectable DLL that fixes the bug Win95 "Full Tilt! Pinball" has with saving strings to the registry.
 
 
 
-Both the 1.0 and 1.1 versions of the Full Tilt table executables (CADET.EXE, PIRATES.EXE, DRAGON.EXE) have a bug under any Windows newer than Win98 ... they truncate the final character of any string they attempt to write to the registry. This causes a few issues, including being unable to save high scores.
+Both the 1.0 and 1.1 versions of the Full Tilt! Pinball table executables (CADET.EXE, PIRATES.EXE, DRAGON.EXE) have a bug under any Windows newer than Win98 ... they truncate the final character of any string they attempt to write to the registry. This causes a few issues, including being unable to save high scores.
 
 
 
