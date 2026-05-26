@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="FullTilt2Launcher/FullTilt2Launcher.vcxproj" />
+</Solution>

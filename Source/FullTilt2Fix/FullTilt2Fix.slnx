@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="FullTilt2Fix/FullTilt2Fix.vcxproj" Id="9462cda8-9ac2-4db1-bfac-72e4d09c510f" />
+</Solution>
