@@ -1,6 +1,6 @@
 # FullTiltFix
 
-An injectable DLL that fixes some of the bugs Win95 "Full Tilt! Pinball" has in modern Windows:
+An launcher/DLL that fixes some of the bugs Win95 "Full Tilt! Pinball" has in modern Windows:
 
 
 
@@ -16,21 +16,17 @@ Both the 1.0 and 1.1 versions of the Full Tilt! Pinball table executables (CADET
 
 
 
-The table executables launch their window out of position - this fix centers the window nearly immediately.
+The table executables launch their window out of position - this fix centers the window nearly immediately. (There is still some fullscreen weirdness, but it is playable)
 
 
 
-Notes:
+Notes and usage:
 
 
 
-You'll need a tool like Xenos to inject this DLL into the .exe at runtime (at some point I plan to create an .EXE patch).
+Put the launcher .exe and fix .dll into the table folder; on launch it will automatically detect CADET.EXE, PIRATES.EXE, or DRAGON.EXE, launch it, and inject the DLL ... 
 
 
 
-Pre-compiled DLL and source is included (has a dependency on MinHook, included - https://github.com/TsudaKageyu/minhook License: https://opensource.org/license/BSD-2-Clause)
-
-
-
-
+Pre-compiled DLL, EXE and source is included (has a dependency on MinHook, included - https://github.com/TsudaKageyu/minhook License: https://opensource.org/license/BSD-2-Clause)
 
