@@ -1,1 +1,5 @@
 C:\Users\conse\source\repos\FullTiltFix\FullTiltFix\dllmain.cpp;C:\Users\conse\source\repos\FullTiltFix\FullTiltFix\Debug\dllmain.obj
+C:\Users\conse\source\repos\FullTiltFix\FullTiltFix\MinHook\src\buffer.c;C:\Users\conse\source\repos\FullTiltFix\FullTiltFix\Debug\buffer.obj
+C:\Users\conse\source\repos\FullTiltFix\FullTiltFix\MinHook\src\hde\hde32.c;C:\Users\conse\source\repos\FullTiltFix\FullTiltFix\Debug\hde32.obj
+C:\Users\conse\source\repos\FullTiltFix\FullTiltFix\MinHook\src\hook.c;C:\Users\conse\source\repos\FullTiltFix\FullTiltFix\Debug\hook.obj
+C:\Users\conse\source\repos\FullTiltFix\FullTiltFix\MinHook\src\trampoline.c;C:\Users\conse\source\repos\FullTiltFix\FullTiltFix\Debug\trampoline.obj

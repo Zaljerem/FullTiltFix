@@ -13,7 +13,6 @@ typedef LSTATUS(WINAPI* RegSetValueExA_t)(
 RegSetValueExA_t Real_RegSetValueExA = nullptr;
 
 
-
 typedef BOOL(WINAPI* SetWindowPos_t)(
     HWND,
     HWND,
@@ -26,7 +25,42 @@ typedef BOOL(WINAPI* SetWindowPos_t)(
 SetWindowPos_t Real_SetWindowPos = nullptr;
 
 
+// ----------------------------------------------------
+// One-time window fix flag
+// ----------------------------------------------------
+static bool g_windowFixed = false;
 
+
+// ----------------------------------------------------
+// Center window helper
+// ----------------------------------------------------
+void CenterWindow(HWND hWnd)
+{
+    RECT rc = { 0 };
+    GetWindowRect(hWnd, &rc);
+
+    int width = rc.right - rc.left;
+    int height = rc.bottom - rc.top;
+
+    int screenW = GetSystemMetrics(SM_CXSCREEN);
+    int screenH = GetSystemMetrics(SM_CYSCREEN);
+
+    int x = (screenW - width) / 2;
+    int y = (screenH - height) / 2;
+
+    SetWindowPos(
+        hWnd,
+        NULL,
+        x,
+        y,
+        0, 0,
+        SWP_NOZORDER | SWP_NOSIZE);
+}
+
+
+// ----------------------------------------------------
+// Registry hook (unchanged logic)
+// ----------------------------------------------------
 LSTATUS WINAPI Hook_RegSetValueExA(
     HKEY hKey,
     LPCSTR lpValueName,
@@ -35,12 +69,10 @@ LSTATUS WINAPI Hook_RegSetValueExA(
     const BYTE* lpData,
     DWORD cbData)
 {
-    // Only fix REG_SZ values
     if (dwType == REG_SZ && lpData && cbData > 0)
     {
         const char* str = (const char*)lpData;
 
-        // If terminator is missing, fix length
         if (str[cbData - 1] != '\0')
         {
             cbData++;
@@ -63,8 +95,11 @@ LSTATUS WINAPI Hook_RegSetValueExA(
         lpData,
         cbData);
 }
-;
 
+
+// ----------------------------------------------------
+// Window position hook (one-time fix)
+// ----------------------------------------------------
 BOOL WINAPI Hook_SetWindowPos(
     HWND hWnd,
     HWND hWndInsertAfter,
@@ -75,24 +110,20 @@ BOOL WINAPI Hook_SetWindowPos(
     UINT uFlags)
 {
     char title[256] = {};
-
     GetWindowTextA(hWnd, title, sizeof(title));
 
-    if (
+    // Only target main Full Tilt windows
+    if (!g_windowFixed &&
         strstr(title, "Full Tilt!") &&
-        GetWindow(hWnd, GW_OWNER) == NULL
-        )
+        GetWindow(hWnd, GW_OWNER) == NULL &&
+        IsWindowVisible(hWnd))
     {
-        if (X < -100 || X > 3000)
-            X = 0;
+        g_windowFixed = true;
 
-        if (Y < -100 || Y > 3000)
-            Y = 0;
-
-        uFlags &= ~SWP_NOMOVE;
+        CenterWindow(hWnd);
 
 #ifdef _DEBUG
-        OutputDebugStringA("Corrected Full Tilt window position\n");
+        OutputDebugStringA("Centered Full Tilt window (one-time fix)\n");
 #endif
     }
 
@@ -107,6 +138,9 @@ BOOL WINAPI Hook_SetWindowPos(
 }
 
 
+// ----------------------------------------------------
+// Dll entry + hook install
+// ----------------------------------------------------
 BOOL APIENTRY DllMain(
     HMODULE hModule,
     DWORD ul_reason_for_call,

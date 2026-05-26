@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="FullTiltFix/FullTiltFix.vcxproj" />
+  <Project Path="FullTiltFix/FullTiltFix.vcxproj" Id="9462cda8-9ac2-4db1-bfac-72e4d09c510f" />
 </Solution>

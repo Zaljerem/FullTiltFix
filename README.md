@@ -1,6 +1,10 @@
 # FullTiltFix
 
-An injectable DLL that fixes the bug Win95 "Full Tilt! Pinball" has with saving strings to the registry.
+An injectable DLL that fixes some of the bugs Win95 "Full Tilt! Pinball" has in modern Windows:
+
+
+
+* Issue writing strings to the registry
 
 
 
@@ -8,13 +12,25 @@ Both the 1.0 and 1.1 versions of the Full Tilt! Pinball table executables (CADET
 
 
 
+* Initial window spawns out of position
+
+
+
+The table executables launch their window out of position - this fix centers the window nearly immediately.
+
+
+
+Notes:
+
+
+
 You'll need a tool like Xenos to inject this DLL into the .exe at runtime (at some point I plan to create an .EXE patch).
 
 
 
-Pre-compiled DLL and source is included (has a dependency on MinHook - https://github.com/TsudaKageyu/minhook License: https://opensource.org/license/BSD-2-Clause)
+Pre-compiled DLL and source is included (has a dependency on MinHook, included - https://github.com/TsudaKageyu/minhook License: https://opensource.org/license/BSD-2-Clause)
 
 
 
-I would also like to address the windows positioning issue they have as well, at some point.
+
 
