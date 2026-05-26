@@ -1,6 +1,6 @@
 # FullTiltFix
 
-An launcher/DLL that fixes some of the bugs Win95 "Full Tilt! Pinball" has in modern Windows:
+A launcher/DLL that fixes some of the bugs Win95 "Full Tilt! Pinball" has in modern Windows:
 
 
 
